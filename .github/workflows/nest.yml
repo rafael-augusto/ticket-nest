@@ -1,0 +1,23 @@
+name: Nest
+on:
+  push:
+    branches: [ main ]
+
+  pull_request:
+    branches: [ main ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [15.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: npm ci and npm run build
+        run: |
+          npm ci
+          npm run build
